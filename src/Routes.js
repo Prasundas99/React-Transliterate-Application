@@ -3,6 +3,7 @@ import Home from './Pages/Home/index.jsx'
 
 import ScrollToTop from './components/utils/ScrollToTop.js'
 import Navbar from './components/Layouts/Navbar/index.jsx'
+import Translate from './Pages/Translate/index.jsx'
 
 const routes = [
     {
@@ -11,7 +12,7 @@ const routes = [
     },
     {
         path: '/translate',
-        component: Home
+        component: Translate
     }
 ]
 
