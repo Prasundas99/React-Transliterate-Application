@@ -1,8 +1,8 @@
-import { getTranslatedString } from '../apis/translate';
-import { updateDictionary } from '../slices/dictionary';
-import store from '../store';
-import { seperators } from '../../components/utils/constants';
-import { replaceString } from '../../components/utils/functions';
+import { getTranslatedString } from '../apis/translate'
+import { updateDictionary } from '../slices/dictionary'
+import store from '../store'
+import { seperators } from '../../components/utils/constants'
+import { replaceString } from '../../components/utils/functions'
 
 /**
  * @param {string} str - The string to be translated
@@ -13,15 +13,15 @@ import { replaceString } from '../../components/utils/functions';
  * - If the request fails, we return an array containing only the input string
  */
 export const translateString = async (str, languageCode) => {
-  if (seperators.includes(str)) return [str];
+  if (seperators.includes(str)) return [str]
   try {
-    const res = await getTranslatedString(str, languageCode);
-    return res.data[1][0][1];
+    const res = await getTranslatedString(str, languageCode)
+    return res.data[1][0][1]
   } catch (err) {
-    console.error(err.message);
-    return [str];
+    console.error(err.message)
+    return [str]
   }
-};
+}
 
 /**
  * @param {string} inputString - The full text written by the user
@@ -30,15 +30,28 @@ export const translateString = async (str, languageCode) => {
  * @param {string} languageCode - The language code for the language used for translation (e.g. en-t-i0-und)
  * @returns {string} - The full text written by the user with the translated substring at its place
  */
-export const handleStringTranslation = async (inputString, startIndex, endIndex, languageCode) => {
-  const targetStr = inputString.slice(startIndex, endIndex);
+export const handleStringTranslation = async (
+  inputString,
+  startIndex,
+  endIndex,
+  languageCode
+) => {
+  const targetStr = inputString.slice(startIndex, endIndex)
   try {
-    const translatedResults = await translateString(targetStr, languageCode);
-    if (translatedResults.length === 0) throw new Error('No results found');
-    const mostProbableResult = translatedResults[0];
-    store.dispatch(updateDictionary({ key: targetStr, values: translatedResults, languageCode }));
-    return { newString: replaceString(inputString, mostProbableResult, startIndex, endIndex), suggessions: translatedResults };
+    const translatedResults = await translateString(targetStr, languageCode)
+    if (translatedResults.length === 0) throw new Error('No results found')
+    const mostProbableResult = translatedResults[0]
+    store.dispatch(
+      updateDictionary({ key: targetStr, values: translatedResults, languageCode })
+    )
+    return {
+      newString: replaceString(inputString, mostProbableResult, startIndex, endIndex),
+      suggessions: translatedResults
+    }
   } catch (err) {
-    return { newString: replaceString(inputString, targetStr, startIndex, endIndex), suggessions: [] };
+    return {
+      newString: replaceString(inputString, targetStr, startIndex, endIndex),
+      suggessions: []
+    }
   }
-};
+}

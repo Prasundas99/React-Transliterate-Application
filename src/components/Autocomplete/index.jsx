@@ -1,5 +1,5 @@
-import MuiAutocomplete from '@mui/material/Autocomplete';
-import styled from '@mui/system/styled';
+import MuiAutocomplete from '@mui/material/Autocomplete'
+import styled from '@mui/system/styled'
 
 /**
  * @description
@@ -12,12 +12,12 @@ const Autocomplete = styled(MuiAutocomplete)((props) => ({
   height: 'fit-content',
   '& .MuiAutocomplete-endAdornment': {
     top: '50%',
-    transform: 'translateY(-50%)',
+    transform: 'translateY(-50%)'
   },
   '& .MuiAutocomplete-input, & .MuiInputLabel-root': {
-    fontSize: props.theme.typography.body1.fontSize,
-  },
-}));
+    fontSize: props.theme.typography.body1.fontSize
+  }
+}))
 
 /**
  * @description
@@ -25,11 +25,11 @@ const Autocomplete = styled(MuiAutocomplete)((props) => ({
  * - We can override it by changing the fontSize property for the Option component.
  */
 export const Option = styled('li')((props) => ({
-  fontSize: props.theme.typography.body1.fontSize,
-}));
+  fontSize: props.theme.typography.body1.fontSize
+}))
 
-Autocomplete.propTypes = {};
+Autocomplete.propTypes = {}
 
-Autocomplete.defaultProps = {};
+Autocomplete.defaultProps = {}
 
-export default Autocomplete;
+export default Autocomplete
