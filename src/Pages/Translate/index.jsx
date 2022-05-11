@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
-import Translator from '../../components/Layouts/Translator';
+import { Box } from '@mui/material'
+import Transliterator from '../../components/Transliterator'
 
 /**
  * - The Translate page component
@@ -8,9 +8,9 @@ import Translator from '../../components/Layouts/Translator';
 const Translate = () => {
   return (
     <Box sx={{ mt: 5 }}>
-      <Translator />
+      <Transliterator />
     </Box>
-  );
-};
+  )
+}
 
-export default Translate;
+export default Translate

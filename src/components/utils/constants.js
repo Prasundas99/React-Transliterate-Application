@@ -2,11 +2,11 @@
  * This file contains all the constants used in the project
  */
 
-export const seperators = [' ', '.', '-', '?', '!', ':', ';', ',', '\n'];
+export const seperators = [' ', '.', '-', '?', '!', ':', ';', ',', '\n']
 
-export const seperatorRegex = /[`!@#$%^&*()_+\-=\]{};':"\\|,.<>?~\s+]/;
+export const seperatorRegex = /[`!@#$%^&*()_+\-=\]{};':"\\|,.<>?~\s+]/
 
-export const TEXT_CONTENT = 'TEXT_CONTENT';
+export const TEXT_CONTENT = 'TEXT_CONTENT'
 
 export const languages = [
   { label: 'English', value: 'en-t-i0-und' },
@@ -34,5 +34,5 @@ export const languages = [
   { label: 'Telugu', value: 'te-t-i0-und' },
   { label: 'Thai', value: 'th-t-i0-und' },
   { label: 'Tigrinya', value: 'ti-t-i0-und' },
-  { label: 'Urdu', value: 'ur-t-i0-und' },
-];
+  { label: 'Urdu', value: 'ur-t-i0-und' }
+]

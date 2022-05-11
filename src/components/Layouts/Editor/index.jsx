@@ -1,5 +1,5 @@
-import { TextArea } from './editor.styles';
-import { useEditor } from './editor';
+import { TextArea } from './editor.styles'
+import { useEditor } from './editor'
 
 /**
  * @returns {JSX.Element} The editor component
@@ -14,13 +14,18 @@ import { useEditor } from './editor';
  * }
  */
 const Editor = () => {
-  const { content, onContentChange, onContentSelect } = useEditor();
+  const { content, onContentChange, onContentSelect } = useEditor()
 
   return (
     <>
-      <TextArea onSelect={onContentSelect} rows={10} value={content} onChange={onContentChange}></TextArea>
+      <TextArea
+        onSelect={onContentSelect}
+        rows={10}
+        value={content}
+        onChange={onContentChange}
+      ></TextArea>
     </>
-  );
-};
+  )
+}
 
-export default Editor;
+export default Editor

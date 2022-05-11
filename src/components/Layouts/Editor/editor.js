@@ -1,7 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { seperators } from '../../utils/constants';
-import { setContent, setCurrentContentOptions, setStartAndEndIndex } from '../../../redux/slices/translate';
-import { handleStringTranslation } from '../../../redux/services/translate';
+import { useDispatch, useSelector } from 'react-redux'
+import { seperators } from '../../utils/constants'
+import {
+  setContent,
+  setCurrentContentOptions,
+  setStartAndEndIndex
+} from '../../../redux/slices/translate'
+import { handleStringTranslation } from '../../../redux/services/translate'
 
 /**
  * @returns {object} Contains the following properties:
@@ -12,9 +16,9 @@ import { handleStringTranslation } from '../../../redux/services/translate';
  * - It seperates the logic from the component and makes it reusable
  */
 export const useEditor = () => {
-  const dispatch = useDispatch();
-  const { content, language } = useSelector((state) => state.translate);
-  const dictionary = useSelector((state) => state.dictionary);
+  const dispatch = useDispatch()
+  const { content, language } = useSelector((state) => state.translate)
+  const dictionary = useSelector((state) => state.dictionary)
 
   /**
    *
@@ -22,10 +26,10 @@ export const useEditor = () => {
    * @returns {array} An array consisting of the start and end index of the selected text in the whole content
    */
   const getSelectedTextIndexes = (e) => {
-    let startIndex = e.target.selectionStart;
-    let endIndex = e.target.selectionEnd;
-    return [startIndex, endIndex];
-  };
+    let startIndex = e.target.selectionStart
+    let endIndex = e.target.selectionEnd
+    return [startIndex, endIndex]
+  }
 
   /**
    *
@@ -34,12 +38,12 @@ export const useEditor = () => {
    * - This function is used to get the indexes of the last word in the content
    */
   const getLastTextIndexes = (inputString) => {
-    let j = inputString.length - 1;
-    let i = j - 1;
-    while (i >= 0 && !seperators.includes(inputString[i])) i--;
-    i++;
-    return [i, j];
-  };
+    let j = inputString.length - 1
+    let i = j - 1
+    while (i >= 0 && !seperators.includes(inputString[i])) i--
+    i++
+    return [i, j]
+  }
 
   /**
    *
@@ -50,16 +54,20 @@ export const useEditor = () => {
    * - It also updates the start and end index of the selected text in the reducer
    */
   const onContentSelect = async (e) => {
-    const inputString = e.target.value;
-    const [startIndex, endIndex] = getSelectedTextIndexes(e);
-    const selectedString = inputString.slice(startIndex, endIndex).trim();
+    const inputString = e.target.value
+    const [startIndex, endIndex] = getSelectedTextIndexes(e)
+    const selectedString = inputString.slice(startIndex, endIndex).trim()
     if (startIndex === endIndex || !selectedString || seperators.includes(selectedString)) {
-      dispatch(setCurrentContentOptions([]));
-      return;
+      dispatch(setCurrentContentOptions([]))
+      return
     }
-    dispatch(setStartAndEndIndex([startIndex, endIndex]));
-    dispatch(setCurrentContentOptions(await getSuggessions(inputString, startIndex, endIndex, language)));
-  };
+    dispatch(setStartAndEndIndex([startIndex, endIndex]))
+    dispatch(
+      setCurrentContentOptions(
+        await getSuggessions(inputString, startIndex, endIndex, language)
+      )
+    )
+  }
 
   /**
    * @param {string} fullString The full string entered in the editor
@@ -69,11 +77,17 @@ export const useEditor = () => {
    * @returns {array} An array consisting of the possible translations of the target text
    */
   const getSuggessions = async (fullString, startIndex, endIndex, language) => {
-    const str = fullString.slice(startIndex, endIndex).trim();
-    if (dictionary[language.value] && dictionary[language.value][str]) return dictionary[language.value][str];
-    const { suggessions } = await handleStringTranslation(fullString, startIndex, endIndex, language.value);
-    return suggessions;
-  };
+    const str = fullString.slice(startIndex, endIndex).trim()
+    if (dictionary[language.value] && dictionary[language.value][str])
+      return dictionary[language.value][str]
+    const { suggessions } = await handleStringTranslation(
+      fullString,
+      startIndex,
+      endIndex,
+      language.value
+    )
+    return suggessions
+  }
 
   /**
    *
@@ -83,17 +97,23 @@ export const useEditor = () => {
    * - It gets the start and end index of the last word in the content translates it accordingly
    */
   const onContentChange = async (e) => {
-    const inputString = e.target.value;
+    const inputString = e.target.value
     try {
-      if (!seperators.includes(inputString.at(-1))) throw new Error('Continuing existing word, put a seperator to translate the word');
-      const [startIndex, endIndex] = getLastTextIndexes(inputString);
-      if (startIndex === endIndex) throw new Error('Nothing to translate');
-      const { newString } = await handleStringTranslation(inputString, startIndex, endIndex, language.value);
-      dispatch(setContent(newString));
+      if (!seperators.includes(inputString.at(-1)))
+        throw new Error('Continuing existing word, put a seperator to translate the word')
+      const [startIndex, endIndex] = getLastTextIndexes(inputString)
+      if (startIndex === endIndex) throw new Error('Nothing to translate')
+      const { newString } = await handleStringTranslation(
+        inputString,
+        startIndex,
+        endIndex,
+        language.value
+      )
+      dispatch(setContent(newString))
     } catch (err) {
-      dispatch(setContent(inputString));
+      dispatch(setContent(inputString))
     }
-  };
+  }
 
-  return { content, onContentChange, onContentSelect };
-};
+  return { content, onContentChange, onContentSelect }
+}

@@ -1,4 +1,4 @@
-import styled from '@mui/system/styled';
+import styled from '@mui/system/styled'
 
 export const TextArea = styled('textarea')((props) => ({
   width: '100%',
@@ -7,5 +7,5 @@ export const TextArea = styled('textarea')((props) => ({
   outline: 'none',
   resize: 'none',
   padding: '1rem',
-  fontSize: '1.4rem',
-}));
+  fontSize: '1.4rem'
+}))

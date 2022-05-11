@@ -1,9 +1,9 @@
-import { Paper } from '@mui/material';
-import styled from '@mui/system/styled';
-import Flex from '../../Flex'
+import { Paper } from '@mui/material'
+import styled from '@mui/system/styled'
+import Flex from '../Flex'
 
 export const RootContainer = styled(Paper)((props) => ({
-  background: '#1ab27333',
+  background: '#09538d',
   borderRadius: props.theme.shape.borderRadius,
   marginLeft: 0,
   marginRight: 0,
@@ -12,12 +12,12 @@ export const RootContainer = styled(Paper)((props) => ({
   padding: '1rem',
   [props.theme.breakpoints.up('md')]: {
     marginLeft: props.theme.spacing(10),
-    marginRight: props.theme.spacing(10),
-  },
-}));
+    marginRight: props.theme.spacing(10)
+  }
+}))
 
 export const Header = styled(Paper)((props) => ({
-  background: '#1ab27366',
+  background: 'rgb(103, 183, 247)',
   textAlign: 'center',
   height: '5rem',
   marginTop: '1rem',
@@ -28,16 +28,16 @@ export const Header = styled(Paper)((props) => ({
     justifyContent: 'flex-start',
     padding: '0 1rem',
     [props.theme.breakpoints.up('md')]: {
-      justifyContent: 'center',
-    },
+      justifyContent: 'center'
+    }
   },
   '& p': {
-    fontSize: '1.2rem',
+    fontSize: '1.2rem'
   },
   '& button:not(:last-child)': {
-    marginRight: '1rem',
-  },
-}));
+    marginRight: '1rem'
+  }
+}))
 
 export const CardsContainer = styled(Flex)((props) => ({
   flexWrap: 'wrap',
@@ -45,15 +45,15 @@ export const CardsContainer = styled(Flex)((props) => ({
   '& *:not(:last-child)': {
     marginRight: '1rem',
     [props.theme.breakpoints.up('md')]: {
-      marginRight: '1rem',
-    },
+      marginRight: '1rem'
+    }
   },
   [props.theme.breakpoints.down('md')]: {
     '& button': {
-      width: 'calc(33.33% - 1rem)',
+      width: 'calc(33.33% - 1rem)'
     },
     '& > div': {
-      width: 'calc(50% - 1rem)',
-    },
-  },
-}));
+      width: 'calc(50% - 1rem)'
+    }
+  }
+}))

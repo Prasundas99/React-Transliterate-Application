@@ -1,17 +1,20 @@
-import axios from "axios";
+import axios from 'axios'
 
-const baseUrl = process.env.REACT_APP_URL;
+const baseUrl = 'https://inputtools.google.com'
+
+console.log(baseUrl)
 
 /**
- *
+ *@method GET /{baseUrl}/request?text=${inputString}&itc=${languageCode}&num=5&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage
  * @param {string} inputString The input string to be translated
  * @param {string} languageCode The language code to translate to
- * @returns Promise<AxiosResponse<any, any>> The response from the API
  * @description This function takes in a string and a language code and calls the api to fetch the translated strings.
  * It returns an array of possible translations.
+ * @returns Promise<AxiosResponse<any, any>> The response from the API
+ * @response ["SUCCESS",[["Hello",["হ্যালো","হেল্লো","হেল্ল","হেলাল","হেলো"],[],{"candidate_type":[0,0,0,0,0]}]]]
  */
-export const getTranslatedString = (inputString = "", languageCode) => {
+export const getTranslatedString = (inputString = '', languageCode) => {
   return axios.get(
     `${baseUrl}/request?text=${inputString}&itc=${languageCode}&num=5&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`
-  );
-};
+  )
+}
