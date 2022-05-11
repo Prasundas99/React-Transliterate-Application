@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { seperators } from '../../utils/constants';
-import { setContent, setCurrentContentOptions, setStartAndEndIndex } from 'redux/slices/translate';
-import { handleStringTranslation } from 'services/translate';
+import { setContent, setCurrentContentOptions, setStartAndEndIndex } from '../../../redux/slices/translate';
+import { handleStringTranslation } from '../../../redux/services/translate';
 
 /**
  * @returns {object} Contains the following properties:

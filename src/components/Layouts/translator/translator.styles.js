@@ -1,6 +1,6 @@
 import { Paper } from '@mui/material';
 import styled from '@mui/system/styled';
-import Flex from 'components/flex';
+import Flex from '../../Flex'
 
 export const RootContainer = styled(Paper)((props) => ({
   background: '#1ab27333',
