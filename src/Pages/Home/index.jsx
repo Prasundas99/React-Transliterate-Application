@@ -8,7 +8,7 @@ import HeroImg from '../../assets/hero.svg'
 export default function Home() {
   return (
       <Box>
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" style={{margin: "6rem 3.5rem"}}>
       <Grid container>
         <Grid item md={7}>
           <Typography variant="h5">
