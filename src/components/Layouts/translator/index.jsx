@@ -1,16 +1,16 @@
 import { useMemo } from 'react';
 import { RootContainer, Header, CardsContainer } from './translator.styles';
-import Autocomplete, { Option } from 'components/autocomplete';
-import TextField from 'components/text-field';
+import Autocomplete, { Option } from '../../Autocomplete';
+import TextField from '../../TextField';
 import { useTheme } from '@emotion/react';
-import Flex from 'components/flex';
-import InfoCard from 'components/cards/info-card';
-import Button from 'components/button';
-import Editor from 'layouts/editor';
+import Flex from '../../Flex';
+import InfoCard from '../../Cards/InfoCard';
+import Button from '../../Button';
+import Editor from '../Editor';
 import { useTranslator } from './translator';
 import { useSelector } from 'react-redux';
-import { getTotalCharacters, getTotalWords } from 'utils/functions';
-import { languages } from 'utils/constants';
+import { getTotalCharacters, getTotalWords } from '../../utils/functions';
+import { languages } from '../../utils/constants';
 
 /**
  * @returns {JSX.Element} The translator UI

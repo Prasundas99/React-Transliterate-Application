@@ -1,5 +1,5 @@
 import PropTypes, { oneOf } from 'prop-types';
-import Flex from 'components/flex';
+import Flex from '../../Flex';
 import { StyledCard } from '../cards.styles';
 
 /**
