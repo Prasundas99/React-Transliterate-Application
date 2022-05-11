@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setContent, setLanguage } from '../../../redux/slices/translate'
-import { replaceString } from '../../utils/functions'
+import { setContent, setLanguage } from '../../redux/slices/translate'
+import { replaceString } from '../utils/functions'
 
 /**
  * @returns {object} Contains the following properties:
