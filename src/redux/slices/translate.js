@@ -20,7 +20,7 @@ const initialState = {
 /**
  * - We are creating a redux slice here called translate. It stores the above data globally.
  */
-export const translateSlice = createSlice({
+export const translitarate = createSlice({
   name: 'translate',
   initialState,
   // The following methods are just the setters of the above data
@@ -49,6 +49,6 @@ export const translateSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { setContent, setCurrentContentOptions, setStartAndEndIndex, setLanguage } =
-  translateSlice.actions
+  translitarate.actions
 
-export default translateSlice.reducer
+export default translitarate.reducer

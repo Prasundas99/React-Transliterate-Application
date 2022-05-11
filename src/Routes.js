@@ -8,11 +8,11 @@ import Home from './Pages/Home/index.jsx'
 
 const routes = [
   {
-    path: '/l',
+    path: '/',
     component: Home
   },
   {
-    path: '/',
+    path: '/translate',
     component: Translate
   }
 ]
